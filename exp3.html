@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Admin Panel</title>
+  <style>
+    :root {
+      --header-bg: gainsboro;
+      --text-color: black;
+      --sidebar-bg: lightgray;
+      --main-bg: white;
+      --footer-bg: whitesmoke;
+
+      --dark-header: black;
+      --dark-text: white;
+      --dark-sidebar: dimgray;
+      --dark-main: black;
+      --dark-footer: black;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-areas:
+        "topbar topbar"
+        "nav content"
+        "bottom bottom";
+      grid-template-columns: 220px 1fr;
+      grid-template-rows: auto 1fr auto;
+      height: 100vh;
+    }
+
+    .topbar {
+      grid-area: topbar;
+      background: var(--header-bg);
+      color: var(--text-color);
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav {
+      grid-area: nav;
+      background: var(--sidebar-bg);
+      color: var(--text-color);
+      padding: 16px;
+    }
+
+    .content {
+      grid-area: content;
+      background: var(--main-bg);
+      color: var(--text-color);
+      padding: 16px;
+    }
+
+    .bottom {
+      grid-area: bottom;
+      background: var(--footer-bg);
+      color: var(--text-color);
+      text-align: center;
+      padding: 10px;
+    }
+
+    body.dark {
+      --header-bg: var(--dark-header);
+      --text-color: var(--dark-text);
+      --sidebar-bg: var(--dark-sidebar);
+      --main-bg: var(--dark-main);
+      --footer-bg: var(--dark-footer);
+    }
+
+    .nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav li {
+      margin-bottom: 8px;
+    }
+
+    .nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <header class="topbar">
+      <h1>Admin Dashboard</h1>
+      <button id="toggle-theme">Dark Mode</button>
+    </header>
+
+    <aside class="nav">
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Users</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <h2>Welcome Back</h2>
+      <p>This is your main workspace for reports and actions.</p>
+    </main>
+
+    <footer class="bottom">
+      <p>&copy; 2023 YourCompany. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const toggleButton = document.getElementById('toggle-theme');
+
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      toggleButton.textContent = dark ? 'Light Mode' : 'Dark Mode';
+    });
+  </script>
+</body>
+</html>
