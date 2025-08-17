@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Filter</title>
+</head>
+<body>
+
+  <h3>Filter Products</h3>
+
+  <!-- Only 2 options -->
+  <select id="filter">
+    <option value="all">All</option>
+    <option value="fruit">Fruit</option>
+  </select>
+
+  <!-- Products -->
+  <div id="products">
+    <p data-type="fruit">Apple</p>
+    <p data-type="fruit">Banana</p>
+    <p data-type="other">Soap</p>
+    <p data-type="other">Notebook</p>
+  </div>
+
+  <script>
+    let filter = document.getElementById("filter");
+    let items = document.querySelectorAll("#products p");
+
+    filter.onchange = function() {
+      let value = filter.value;
+
+      items.forEach(item => {
+        if (value === "all" || item.getAttribute("data-type") === value) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    };
+  </script>
+
+</body>
+</html>
